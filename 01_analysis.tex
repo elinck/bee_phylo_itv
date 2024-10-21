@@ -1,0 +1,706 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Testing for scale-dependent phylogenetic signal in intetegular distance in bee communities in Montana, USA},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Testing for scale-dependent phylogenetic signal in intetegular
+distance in bee communities in Montana, USA}
+\author{}
+\date{\vspace{-2.5em}2024-10-17}
+
+\begin{document}
+\maketitle
+
+\subsection{Introduction}\label{introduction}
+
+Species interactions vary across space and time due to both species
+turnover and to a phenomenon known as interaction rewiring. Interaction
+rewiring may be driven by temporal or spatial changes in phenology,
+abundance, or species traits (both intra- and interspecific). The
+impacts of interspecific trait matching, phenology, and abundance on
+ecological netowrks have been repeatedly demonstrated: changes in
+flowering time or tongue morphology have clear impacts on
+plant-pollinator interactions, for example. However, the role of
+intraspecific trait differences in shaping interactions---and their
+relative importance---remain poorly known.
+
+Bees are a species-rich (n\textgreater20,000) clade of Hymenopterans
+with a cosmopolitan distribution. Ecologically important pollinators,
+intraspecific variation in body size is common in some taxa. Because
+body size is highly correlated with tongue length and flying ability, it
+is plausible it mediates foraging choices and thus may explain a portion
+of plant-pollinator interaction rewiring across space.
+
+\subsection{Methods}\label{methods}
+
+\begin{itemize}
+\tightlist
+\item
+  Bees and flowering plants were sampled when observed interacting
+  across 4 years and 142 sites in Montana, USA. Sites were arranged into
+  spatially nested design: 9 sites comprised a block and 8 blocks
+  comprised a locality; there were two localities in the study.
+\item
+  Bees were associated with their foraging substrate, collected and
+  pinned for identification. A proxy for body size, intertegular
+  distance (ITD)---the distance between tegulae (wing bases) on
+  the---was measured in each female individual. (As 75\% of collected
+  individuals were female, male bees were excluded.)
+\end{itemize}
+
+\subsection{Questions}\label{questions}
+
+Our study aims to answer the following questions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  How much phylogenetic signal is there in the magnitude of
+  intraspecific variation in female bee body size?
+\item
+  At what spatial scale(s) does phylogenetic signal emerge?
+\item
+  Do bee species present at a greater number of sites have more
+  intraspecific variation in female bee body size?
+\item
+  Is intraspecific variation in female bee body size predicted by
+  interaction partners after controlling for phylogeny?
+\item
+  Does the strength of the relationship between intraspecific variation
+  in female bee body size vary across scales?
+\end{enumerate}
+
+\subsection{Analysis}\label{analysis}
+
+We'll begin by loading libraries for data manipulation, visualization,
+and Bayesian phylogenetic mixed models:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(reshape2)}
+\FunctionTok{library}\NormalTok{(brms)}
+\FunctionTok{library}\NormalTok{(ape)}
+\FunctionTok{library}\NormalTok{(cowplot)}
+\FunctionTok{library}\NormalTok{(ggtree)}
+\FunctionTok{library}\NormalTok{(phytools)}
+\end{Highlighting}
+\end{Shaded}
+
+Let's also write a function to calculate Bao's estimator of variation
+(\(CV_4\)):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bao }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(data)\{}
+\NormalTok{  N}\OtherTok{=}\FunctionTok{length}\NormalTok{(data)}
+\NormalTok{  y\_bar}\OtherTok{=}\FunctionTok{mean}\NormalTok{(data)}
+\NormalTok{  s2\_hat}\OtherTok{=}\FunctionTok{var}\NormalTok{(data)}
+\NormalTok{  cv\_2}\OtherTok{=}\NormalTok{s2\_hat}\SpecialCharTok{/}\NormalTok{y\_bar}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{  cv\_1}\OtherTok{=}\FunctionTok{sqrt}\NormalTok{(cv\_2)}
+\NormalTok{  gamma\_1}\OtherTok{=}\FunctionTok{sum}\NormalTok{(((data}\SpecialCharTok{{-}}\NormalTok{y\_bar)}\SpecialCharTok{/}\NormalTok{s2\_hat}\SpecialCharTok{\^{}}\FloatTok{0.5}\NormalTok{)}\SpecialCharTok{\^{}}\DecValTok{3}\NormalTok{)}\SpecialCharTok{/}\NormalTok{N}
+\NormalTok{  gamma\_2}\OtherTok{=}\FunctionTok{sum}\NormalTok{(((data}\SpecialCharTok{{-}}\NormalTok{y\_bar)}\SpecialCharTok{/}\NormalTok{s2\_hat}\SpecialCharTok{\^{}}\FloatTok{0.5}\NormalTok{)}\SpecialCharTok{\^{}}\DecValTok{4}\NormalTok{)}\SpecialCharTok{/}\NormalTok{N}
+\NormalTok{  bias}\OtherTok{=}\NormalTok{cv\_2}\SpecialCharTok{\^{}}\NormalTok{(}\DecValTok{3}\SpecialCharTok{/}\DecValTok{2}\NormalTok{)}\SpecialCharTok{/}\NormalTok{N}\SpecialCharTok{*}\NormalTok{(}\DecValTok{3}\SpecialCharTok{*}\NormalTok{cv\_2}\SpecialCharTok{\^{}}\FloatTok{0.5}\DecValTok{{-}2}\SpecialCharTok{*}\NormalTok{gamma\_1)}
+\NormalTok{  bias2}\OtherTok{=}\NormalTok{cv\_1}\SpecialCharTok{\^{}}\DecValTok{3}\SpecialCharTok{/}\NormalTok{N}\SpecialCharTok{{-}}\NormalTok{cv\_1}\SpecialCharTok{/}\DecValTok{4}\SpecialCharTok{/}\NormalTok{N}\SpecialCharTok{{-}}\NormalTok{cv\_1}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{*}\NormalTok{gamma\_1}\SpecialCharTok{/}\DecValTok{2}\SpecialCharTok{/}\NormalTok{N}\SpecialCharTok{{-}}\NormalTok{cv\_1}\SpecialCharTok{*}\NormalTok{gamma\_2}\SpecialCharTok{/}\DecValTok{8}\SpecialCharTok{/}\NormalTok{N}
+\NormalTok{  cv4}\OtherTok{=}\NormalTok{cv\_1}\SpecialCharTok{{-}}\NormalTok{bias2}
+  \FunctionTok{return}\NormalTok{(cv4)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Now we load our data:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bee\_data }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"\textasciitilde{}/Dropbox/bee\_phylo\_itv/bee\_females\_for\_ethan.csv"}\NormalTok{) }\CommentTok{\# bee trait data}
+\NormalTok{bee\_phylo }\OtherTok{\textless{}{-}} \FunctionTok{read.tree}\NormalTok{(}\StringTok{"\textasciitilde{}/Dropbox/bee\_phylo\_itv/BEE\_prunedtree.nwk"}\NormalTok{) }\CommentTok{\# pruned newick{-}format phlogeny of bee species present in MT}
+\end{Highlighting}
+\end{Shaded}
+
+Let's look at the trait data first:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bee\_data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4,367 x 27
+##    TRANSECT_COMBO LOCATION block_2 IT_microns IT_mm ORDER       FAMILY     GENUS
+##    <chr>          <chr>    <chr>        <dbl> <dbl> <chr>       <chr>      <chr>
+##  1 HEMX1_01       HE       E            1776.  1.78 Hymenoptera Halictidae Agap~
+##  2 HEMX1_02       HE       E            1857.  1.86 Hymenoptera Halictidae Agap~
+##  3 HEMX1_06       HE       E            1857.  1.86 Hymenoptera Halictidae Agap~
+##  4 HENEWHI1_04    HE       A            1959.  1.96 Hymenoptera Halictidae Agap~
+##  5 HENEWHI2_02    HE       B            1959.  1.96 Hymenoptera Halictidae Agap~
+##  6 HENEWHI2_04    HE       B            1939.  1.94 Hymenoptera Halictidae Agap~
+##  7 HEOLDHI1_07    HE       M            1959.  1.96 Hymenoptera Halictidae Agap~
+##  8 HEOLDHI2_06    HE       N            1816.  1.82 Hymenoptera Halictidae Agap~
+##  9 HEOLDHI2_08    HE       N            1898.  1.90 Hymenoptera Halictidae Agap~
+## 10 HEMX1_03       HE       E            2020.  2.02 Hymenoptera Halictidae Agap~
+## # i 4,357 more rows
+## # i 19 more variables: GENUS_SPECIES <chr>, SEX <lgl>, NESTING <chr>,
+## #   NestingAlt <chr>, SOCIALITY <chr>, SocialityAlt <chr>, FLOWER_CODE2 <chr>,
+## #   USDA_CODE <chr>, FLOWER_SPECIES <chr>, COUNTRY <chr>, STATE <chr>,
+## #   COUNTY <chr>, LATITUDE <dbl>, LONGITUDE <dbl>, ELEVATION_m <dbl>,
+## #   JULIAN_DATE <dbl>, DATE <chr>, TIME <time>, YEAR <dbl>
+\end{verbatim}
+
+Important columns include \texttt{TRANSECT\_COMBO}, \texttt{LOCATION},
+\texttt{block\_2}, \texttt{IT\_microns}, \texttt{GENUS\_SPECIES}, and
+\texttt{FLOWER\_SPECIES}. We can summarize these data to get an idea of
+their size and diversity. First, the number of bee species in the
+dataset:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bee\_data}\SpecialCharTok{$}\NormalTok{GENUS\_SPECIES }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{unique}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{length}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 149
+\end{verbatim}
+
+\ldots the number of plant species:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bee\_data}\SpecialCharTok{$}\NormalTok{FLOWER\_SPECIES }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{unique}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{length}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 95
+\end{verbatim}
+
+\ldots and the total number of observations:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bee\_data }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{nrow}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4367
+\end{verbatim}
+
+We may need to filter down these data to only include female bees. Let's
+check to see what levels are present in the ``SEX'' column:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bee\_data}\SpecialCharTok{$}\NormalTok{SEX }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{unique}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+None, apparently---we must be working with a pre-filtered CSV. In that
+case, let's go ahead and calculate Bao's CV for all species with a
+sample size of n \(\geq\) 20:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{) }\CommentTok{\# set seed for reproducibility}
+\NormalTok{bao\_values }\OtherTok{\textless{}{-}}\NormalTok{ bee\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(GENUS\_SPECIES) }\SpecialCharTok{\%\textgreater{}\%}  
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{total\_observations =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(}\FunctionTok{n}\NormalTok{() }\SpecialCharTok{\textgreater{}=} \DecValTok{20}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}                        \CommentTok{\# Filter groups with 20 or more observations}
+  \FunctionTok{sample\_n}\NormalTok{(}\DecValTok{20}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}                             \CommentTok{\# Randomly sample 20 rows from the filtered data}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{bao\_cv =} \FunctionTok{bao}\NormalTok{(IT\_microns), }
+    \AttributeTok{num\_sites =} \FunctionTok{n\_distinct}\NormalTok{(TRANSECT\_COMBO)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(GENUS\_SPECIES, bao\_cv, num\_sites, total\_observations) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{distinct}\NormalTok{()}
+\NormalTok{bao\_values}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 59 x 4
+## # Groups:   GENUS_SPECIES [59]
+##    GENUS_SPECIES            bao_cv num_sites total_observations
+##    <chr>                     <dbl>     <int>              <int>
+##  1 Agapostemon_virescens    0.0364        16                 26
+##  2 Andrena_lawrencei        0.0446        10                 82
+##  3 Andrena_miranda          0.0444        16                 30
+##  4 Andrena_topazana         0.0552        14                 20
+##  5 Anthidium_utahense       0.0680        15                 38
+##  6 Anthophora_terminalis    0.0260        14                 25
+##  7 Apis_mellifera           0.0440        15                 62
+##  8 Ashmeadiella_bucconis    0.0724        16                 50
+##  9 Ashmeadiella_cactorum    0.0474        15                 36
+## 10 Ashmeadiella_californica 0.0797        12                 20
+## # i 49 more rows
+\end{verbatim}
+
+How are these data distributed?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p1 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(bao\_values, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\FunctionTok{log}\NormalTok{(bao\_cv))) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_bw}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{bins=}\DecValTok{40}\NormalTok{)}
+\NormalTok{p1}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{01_analysis_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+Next, let's prepare our phylogenetic data. We need to create a consensus
+phylogeny that retains branch lengths (by averaging), drop tips that
+aren't present in the 59 species in our summary dataset, cand alculate
+and visualize a correlation matrix given a Brownian motion model of
+trait evolution (NOT a covariance matrix; see dicussion here:
+\url{https://discourse.mc-stan.org/t/covariance-matrix-phylogenetic-models/20477/4}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bee\_phylo\_consensus }\OtherTok{\textless{}{-}} \FunctionTok{consensus.edges}\NormalTok{(bee\_phylo) }
+\NormalTok{bee\_phylo\_consensus }\OtherTok{\textless{}{-}} \FunctionTok{keep.tip}\NormalTok{(bee\_phylo\_consensus, }\FunctionTok{unique}\NormalTok{(bao\_values}\SpecialCharTok{$}\NormalTok{GENUS\_SPECIES))}
+\NormalTok{A }\OtherTok{\textless{}{-}}\NormalTok{ ape}\SpecialCharTok{::}\FunctionTok{vcv.phylo}\NormalTok{(bee\_phylo\_consensus, }\AttributeTok{corr =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{melted\_A }\OtherTok{\textless{}{-}} \FunctionTok{melt}\NormalTok{(A)}
+\FunctionTok{head}\NormalTok{(melted\_A)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                 Var1              Var2      value
+## 1  Andrena_lawrencei Andrena_lawrencei 1.00000000
+## 2    Andrena_miranda Andrena_lawrencei 0.77446907
+## 3   Andrena_topazana Andrena_lawrencei 0.77443624
+## 4 Colletes_kincaidii Andrena_lawrencei 0.02584236
+## 5 Colletes_phaceliae Andrena_lawrencei 0.02584186
+## 6  Colletes_fulgidus Andrena_lawrencei 0.02584443
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cov }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ melted\_A, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Var1, }\AttributeTok{y=}\NormalTok{Var2, }\AttributeTok{fill=}\NormalTok{value)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_tile}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{hjust=}\DecValTok{1}\NormalTok{), }\AttributeTok{axis.title =} \FunctionTok{element\_blank}\NormalTok{())}
+\NormalTok{cov}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{01_analysis_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+Here, areas of light blue show high correlation values (e.g., are
+pairwsie comparisons of members of the same clade).
+
+\subsection{1) How much phylogenetic signal is there in the magnitude of
+intraspecific variation in female bee body
+size?}\label{how-much-phylogenetic-signal-is-there-in-the-magnitude-of-intraspecific-variation-in-female-bee-body-size}
+
+To test for phylogenetic signal in our ITV, we'll build a simple
+Bayesian linear model to predict Bao's CV from the number of sites where
+a given species is found. In out subsampled data, there \emph{may} be a
+weak association between these variables, as well as the total number of
+observations of a species (before subsetting) and its Bao CV value
+(calculated after subsetting):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p2 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(bao\_values, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{num\_sites, }\AttributeTok{y=}\FunctionTok{log}\NormalTok{(bao\_cv), )) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_bw}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{pch=}\DecValTok{21}\NormalTok{)}
+\NormalTok{p3 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(bao\_values, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{total\_observations, }\AttributeTok{y=}\FunctionTok{log}\NormalTok{(bao\_cv), )) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_bw}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{pch=}\DecValTok{21}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlim}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{100}\NormalTok{) }\CommentTok{\# note trimmed axis to ignore outliers}
+
+\FunctionTok{plot\_grid}\NormalTok{(p2, p3)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{01_analysis_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+In a Bayesian statistics, a linear model will tell us the posterior
+probability of its parameters (i.e., the effect size of a predictor)
+given the data. Ignoring the marginal likelihood (or ``probability of
+data''), this is what that looks like:
+
+\[
+P(\text{model parameters}|\text{data}) \propto P(\text{data}|\text{model parameters})*P(\text{model parameters})
+\]
+
+It's useful to formally define our model. We start with the likelihood,
+or the probability of a particular parameter value given the observed
+data (i.e., the first hald of the right-hand side of the equation). It
+is a little tricky to think about the most appropriate probability
+distribution for Bao's CV. The data-generating process---local
+adaptation to different niches---might lead to gamma-distributed body
+sizes (in this case, right-skewed data). Gamma distributed data seem
+tricky to deal with in linear models. By log-transforming Bao's CV for
+intertegular distance we should be able to use a Gaussian distribution,
+which will make calculating phylgoenetic signal easier. The likehood
+thus tells us Bao's CV is stochastically related to a normal
+distribution with parameters \(\mu_i\) (the mean) and \(\sigma\)
+(variance). In this case, \(\mu_i\) is itself \emph{deterministically}
+related to the parameter \(\beta\) (``number of sites''), with an
+overall intercept (\(\alpha\)) plus a set of phylogenetically correlated
+intercepts (\(\alpha_j\)):
+
+\[
+\text{log(Bao's CV)} \sim \text{Normal}(\mu_i, \sigma)
+\] \[
+\mu_i = \alpha + \alpha_j + \beta_{\text{num_sites},i}
+\]
+
+We then need to define our priors, or the distribution of sensible
+values for model parameters. We know that \(\alpha_j\) should be drawn
+from a normal distribution with mean \(\alpha\) and correlation
+structure \(\sigma_A\):
+
+\[
+\alpha_j \sim \text{Normal}(\alpha, \sigma_A)
+\]
+
+At this point it's probably easiest to get the rest of the priors we
+need from the \texttt{get\_prior} function from \texttt{brms}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{priors }\OtherTok{\textless{}{-}} \FunctionTok{get\_prior}\NormalTok{(bao\_cv }\SpecialCharTok{\textasciitilde{}} \DecValTok{1} \SpecialCharTok{+}\NormalTok{ num\_sites }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{|}\FunctionTok{gr}\NormalTok{(GENUS\_SPECIES, }\AttributeTok{cov =}\NormalTok{ A)),}
+                    \AttributeTok{data =}\NormalTok{ bao\_values, }\AttributeTok{data2 =} \FunctionTok{list}\NormalTok{(}\AttributeTok{A =}\NormalTok{ A), }\AttributeTok{family=}\FunctionTok{gaussian}\NormalTok{())   }
+\NormalTok{prior}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## function (prior, ...) 
+## {
+##     call <- as.list(match.call()[-1])
+##     seval <- rmNULL(call[prior_seval_args()])
+##     call[prior_seval_args()] <- NULL
+##     call <- lapply(call, deparse_no_string)
+##     do_call(set_prior, c(call, seval))
+## }
+## <bytecode: 0x1431793d0>
+## <environment: namespace:brms>
+\end{verbatim}
+
+This gives us a flat prior for the effect of num\_sites on the outcome
+variable, e.g.~a uniform distribution over all reals:
+
+\[
+\beta_{\text{num_sites},i} \sim \text{Uniform}(-\infty,\infty)
+\]
+
+It also suggests that we use a standard Student's T distribution for
+\(\sigma\), the standard deviation of the residuals:
+
+\[
+\sigma \sim \text{Student}(3, 0, 2.5)
+\]
+
+Now, we'll run our model, using an MCMC chain with the default number of
+steps:
+
+\begin{verbatim}
+## Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c
+## using C compiler: ‘Apple clang version 15.0.0 (clang-1500.0.40.1)’
+## using SDK: ‘’
+## clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/Rcpp/include/"  -I"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/RcppEigen/include/"  -I"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/RcppEigen/include/unsupported"  -I"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/BH/include" -I"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/StanHeaders/include/src/"  -I"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/StanHeaders/include/"  -I"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/RcppParallel/include/"  -I"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -D_HAS_AUTO_PTR_ETC=0  -include '/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c foo.c -o foo.o
+## In file included from <built-in>:1:
+## In file included from /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22:
+## In file included from /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/RcppEigen/include/Eigen/Dense:1:
+## In file included from /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/RcppEigen/include/Eigen/Core:19:
+## /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:679:10: fatal error: 'cmath' file not found
+## #include <cmath>
+##          ^~~~~~~
+## 1 error generated.
+## make: *** [foo.o] Error 1
+## 
+## SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).
+## Chain 1: 
+## Chain 1: Gradient evaluation took 5e-05 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.5 seconds.
+## Chain 1: Adjust your expectations accordingly!
+## Chain 1: 
+## Chain 1: 
+## Chain 1: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 1: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 1: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 1: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 1: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 1: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 1: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 1: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 1: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
+## Chain 1: 
+## Chain 1:  Elapsed Time: 0.287 seconds (Warm-up)
+## Chain 1:                0.169 seconds (Sampling)
+## Chain 1:                0.456 seconds (Total)
+## Chain 1: 
+## 
+## SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
+## Chain 2: 
+## Chain 2: Gradient evaluation took 7e-06 seconds
+## Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.07 seconds.
+## Chain 2: Adjust your expectations accordingly!
+## Chain 2: 
+## Chain 2: 
+## Chain 2: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 2: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 2: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 2: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 2: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 2: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 2: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 2: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 2: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
+## Chain 2: 
+## Chain 2:  Elapsed Time: 0.277 seconds (Warm-up)
+## Chain 2:                0.134 seconds (Sampling)
+## Chain 2:                0.411 seconds (Total)
+## Chain 2: 
+## 
+## SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
+## Chain 3: 
+## Chain 3: Gradient evaluation took 8e-06 seconds
+## Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.08 seconds.
+## Chain 3: Adjust your expectations accordingly!
+## Chain 3: 
+## Chain 3: 
+## Chain 3: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 3: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 3: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 3: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 3: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 3: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 3: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 3: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 3: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
+## Chain 3: 
+## Chain 3:  Elapsed Time: 0.262 seconds (Warm-up)
+## Chain 3:                0.172 seconds (Sampling)
+## Chain 3:                0.434 seconds (Total)
+## Chain 3: 
+## 
+## SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
+## Chain 4: 
+## Chain 4: Gradient evaluation took 8e-06 seconds
+## Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.08 seconds.
+## Chain 4: Adjust your expectations accordingly!
+## Chain 4: 
+## Chain 4: 
+## Chain 4: Iteration:    1 / 2000 [  0%]  (Warmup)
+## Chain 4: Iteration:  200 / 2000 [ 10%]  (Warmup)
+## Chain 4: Iteration:  400 / 2000 [ 20%]  (Warmup)
+## Chain 4: Iteration:  600 / 2000 [ 30%]  (Warmup)
+## Chain 4: Iteration:  800 / 2000 [ 40%]  (Warmup)
+## Chain 4: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+## Chain 4: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+## Chain 4: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+## Chain 4: Iteration: 1400 / 2000 [ 70%]  (Sampling)
+## Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
+## Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
+## Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
+## Chain 4: 
+## Chain 4:  Elapsed Time: 0.262 seconds (Warm-up)
+## Chain 4:                0.113 seconds (Sampling)
+## Chain 4:                0.375 seconds (Total)
+## Chain 4:
+\end{verbatim}
+
+(Output curtailed to keep this document a manageable size/)
+
+Let's summarize the results:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(model\_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Family: gaussian 
+##   Links: mu = identity; sigma = identity 
+## Formula: log(bao_cv) ~ num_sites + (1 | gr(GENUS_SPECIES, cov = A)) 
+##    Data: bao_values (Number of observations: 59) 
+##   Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+##          total post-warmup draws = 4000
+## 
+## Multilevel Hyperparameters:
+## ~GENUS_SPECIES (Number of levels: 59) 
+##               Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+## sd(Intercept)     0.34      0.10     0.15     0.53 1.01      531      966
+## 
+## Regression Coefficients:
+##           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+## Intercept    -3.24      0.36    -3.95    -2.52 1.00     2833     2070
+## num_sites     0.02      0.02    -0.02     0.07 1.00     3213     2201
+## 
+## Further Distributional Parameters:
+##       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+## sigma     0.25      0.05     0.16     0.35 1.01      588      993
+## 
+## Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
+## and Tail_ESS are effective sample size measures, and Rhat is the potential
+## scale reduction factor on split chains (at convergence, Rhat = 1).
+\end{verbatim}
+
+This suggests there is a positive effect of abundance on Bao's CV of
+intertegular distance---but that it is not credible at the 95\% level.
+It also suggests that phylogenetically correlated intercepts explain a
+lot of the variation in Bao's CV we see here. We can formally calculate
+Pagel's \(\lambda\)---the proportion of variance in the model
+attributable to phylogeny---using its residuals. We can also perform a
+one-sided hypothesis test to evaluate the evidence that \(\lambda > 0\).
+To do so, we calculate the ratio of the posterior probabilty that
+\(\lambda>0\) compared with the posterior probability that
+\(\lambda=0\):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hyp }\OtherTok{\textless{}{-}} \StringTok{"sd\_GENUS\_SPECIES\_\_Intercept\^{}2 / (sd\_GENUS\_SPECIES\_\_Intercept\^{}2 + sigma\^{}2) = 0"}
+\NormalTok{(hyp }\OtherTok{\textless{}{-}} \FunctionTok{hypothesis}\NormalTok{(model\_1, hyp, }\AttributeTok{class =} \ConstantTok{NULL}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Hypothesis Tests for class :
+##                 Hypothesis Estimate Est.Error CI.Lower CI.Upper Evid.Ratio
+## 1 (sd_GENUS_SPECIES... = 0     0.62      0.19     0.18     0.89         NA
+##   Post.Prob Star
+## 1        NA    *
+## ---
+## 'CI': 90%-CI for one-sided and 95%-CI for two-sided hypotheses.
+## '*': For one-sided hypotheses, the posterior probability exceeds 95%;
+## for two-sided hypotheses, the value tested against lies outside the 95%-CI.
+## Posterior probabilities of point hypotheses assume equal prior probabilities.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(hyp)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{01_analysis_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+This appears to be concordant with Laura's estimates from
+\texttt{phytools}. The obvious next steps would be to see whether signal
+declines using small subsets of the data (e.g., ask whether \(\lambda\)
+only emerges at broader spatial scales). But we should chat first, I
+think!
+
+\end{document}

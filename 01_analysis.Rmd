@@ -1,6 +1,6 @@
 ---
 title: "Testing for scale-dependent phylogenetic signal in intraspecific variation in intertegular distance across bee communities in Montana, USA"
-output: html_document
+output: pdf_document
 date: "2024-10-17"
 ---
 
@@ -169,7 +169,7 @@ $$
 \text{log(Bao's CV)} \sim \text{Normal}(\mu_i, \sigma)
 $$
 $$
-\mu_i = \alpha + \alpha_j + \beta_{\text{num_sites},i}
+\mu_i = \alpha + \alpha_j + \beta_{\text{abundance},i}
 $$
 
 We then need to define our priors, or the distribution of sensible values for model parameters. We know that $\alpha_j$ should be drawn from a normal distribution with mean $\alpha$ and correlation structure $\sigma_A$:
@@ -189,7 +189,7 @@ prior
 This gives us a flat prior for the effect of num_sites on the outcome variable, e.g. a uniform distribution over all reals: 
 
 $$
-\beta_{\text{num_sites},i} \sim \text{Uniform}(-\infty,\infty)
+\beta_{\text{abundance},i} \sim \text{Uniform}(-\infty,\infty)
 $$
 
 It also suggests that we use a standard Student's T distribution for $\sigma$, the standard deviation of the residuals:
